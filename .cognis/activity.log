@@ -36,3 +36,4 @@
 2025-09-13T10:44:04  chore: one does not simply skip CI
 2026-01-12T17:01:11  docs: standing on the shoulders of giants (garak, sigma, trufflehog)
 2026-05-13T12:18:18  chore: tip of the hat to Thinkst, Bellingcat, and SigmaHQ
+2024-06-05T14:14:34  chore(engine): assert exit codes in tests
