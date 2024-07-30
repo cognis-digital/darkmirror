@@ -39,3 +39,4 @@
 2024-06-05T14:14:34  chore(engine): assert exit codes in tests
 2024-07-05T09:31:41  test(detect): improve error messages with context
 2024-07-17T16:48:48  ci(fixtures): guard against ReDoS in patterns
+2024-07-30T11:05:55  build(rules): add usage examples to help
