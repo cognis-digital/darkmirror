@@ -43,3 +43,4 @@
 2024-08-29T18:22:02  chore: in case of fire — commit, push, leave building
 2024-09-11T13:39:09  style: formatting (we chose violence on tabs vs spaces)
 2024-09-23T08:56:16  feat: PROMETHEUS unbound
+2024-10-23T15:13:23  fix(deps): skip binary files by sniffing
