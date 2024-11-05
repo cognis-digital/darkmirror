@@ -44,3 +44,4 @@
 2024-09-11T13:39:09  style: formatting (we chose violence on tabs vs spaces)
 2024-09-23T08:56:16  feat: PROMETHEUS unbound
 2024-10-23T15:13:23  fix(deps): skip binary files by sniffing
+2024-11-05T10:30:30  docs(scan): cover the multiline case
