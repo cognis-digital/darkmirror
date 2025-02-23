@@ -50,3 +50,4 @@
 2024-12-30T19:21:51  feat(docs): document the config keys
 2025-01-11T14:38:58  chore(detect): fix off-by-one in line numbers
 2025-02-11T09:55:05  docs(cache): lower memory on big inputs
+2025-02-23T16:12:12  ci(tests): wire the MCP tool schema
