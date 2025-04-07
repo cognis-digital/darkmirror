@@ -52,3 +52,4 @@
 2025-02-11T09:55:05  docs(cache): lower memory on big inputs
 2025-02-23T16:12:12  ci(tests): wire the MCP tool schema
 2025-03-08T11:29:19  build(mcp): add type hints to the public API
+2025-04-07T18:46:26  fix(format): improve the demo scenario
