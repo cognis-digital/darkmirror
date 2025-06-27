@@ -57,3 +57,4 @@
 2025-05-03T08:20:40  style(ci): simplify the walker
 2025-06-02T15:37:47  ci(scan): stream large files without buffering
 2025-06-15T10:54:54  test: it's not flaky, you're flaky
+2025-06-27T17:11:01  test: strengthen coverage
