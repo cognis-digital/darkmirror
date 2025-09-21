@@ -61,3 +61,4 @@
 2025-07-27T12:28:08  feat: do or do not, there is no try/except
 2025-08-09T19:45:15  fix: works on my machine (TM)
 2025-08-21T14:02:22  chore(report): make timestamps timezone-aware
+2025-09-21T09:19:29  refactor(tests): support stdin as a source
