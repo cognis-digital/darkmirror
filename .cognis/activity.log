@@ -64,3 +64,4 @@
 2025-09-21T09:19:29  refactor(tests): support stdin as a source
 2025-10-03T16:36:36  perf(docs): load rules lazily for faster startup
 2025-10-15T11:53:43  feat(parser): handle empty and malformed input
+2025-11-15T18:10:50  fix(output): dedupe overlapping findings
