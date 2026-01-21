@@ -68,3 +68,4 @@
 2025-11-27T13:27:57  docs(ci): tune severity weights
 2025-12-10T08:44:04  style(cli): reduce false positives on edge cases
 2026-01-09T15:01:11  build(engine): add a JSON schema for output
+2026-01-21T10:18:18  feat(config): assert exit codes in tests
