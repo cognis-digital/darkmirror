@@ -70,3 +70,4 @@
 2026-01-09T15:01:11  build(engine): add a JSON schema for output
 2026-01-21T10:18:18  feat(config): assert exit codes in tests
 2026-02-03T17:35:25  perf(fixtures): improve error messages with context
+2026-02-16T12:52:32  test(rules): guard against ReDoS in patterns
