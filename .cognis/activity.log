@@ -72,3 +72,4 @@
 2026-02-03T17:35:25  perf(fixtures): improve error messages with context
 2026-02-16T12:52:32  test(rules): guard against ReDoS in patterns
 2026-03-19T19:09:39  ci(io): add usage examples to help
+2026-03-31T14:26:46  build(tests): handle CRLF line endings
