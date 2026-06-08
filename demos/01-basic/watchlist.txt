@@ -1,0 +1,4 @@
+# DARKMIRROR watchlist -- one brand or domain per line, # = comment
+acme-corp.com
+Globex
+initech.io

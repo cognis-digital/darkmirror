@@ -1,0 +1,16 @@
+[
+  {
+    "post_title": "acme-corp.com",
+    "group_name": "lockbit3",
+    "discovered": "2024-03-04 09:12:40.000000",
+    "description": "All internal documents of acme-corp.com will be published unless contact is made.",
+    "website": "http://lockbitapt6vx57t3eeqjofwgcglmutr3a35nygvokja5uuccip4ykyd.onion"
+  },
+  {
+    "post_title": "some-unrelated-victim",
+    "group_name": "play",
+    "discovered": "2024-03-03 03:30:00.000000",
+    "description": "Files available.",
+    "website": "http://playxxx.onion"
+  }
+]

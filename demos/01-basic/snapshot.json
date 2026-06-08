@@ -1,0 +1,37 @@
+[
+  {
+    "post_title": "acme-corp.com",
+    "group_name": "lockbit3",
+    "discovered": "2024-03-04 09:12:40.000000",
+    "description": "All internal documents of acme-corp.com will be published unless contact is made.",
+    "website": "http://lockbitapt6vx57t3eeqjofwgcglmutr3a35nygvokja5uuccip4ykyd.onion"
+  },
+  {
+    "post_title": "globex-industries",
+    "group_name": "lockbit3",
+    "discovered": "2024-03-05 14:55:01.000000",
+    "description": "Globex Industries data leak. 480GB of engineering files.",
+    "website": "http://lockbitapt6vx57t3eeqjofwgcglmutr3a35nygvokja5uuccip4ykyd.onion"
+  },
+  {
+    "post_title": "northwind-traders",
+    "group_name": "blackcat",
+    "discovered": "2024-03-05 22:01:10.000000",
+    "description": "Northwind Traders logistics breach.",
+    "website": "http://alphvmmm27o3abo3r2mlmjrpdmzle3rykajqc5xsj7j7ejksbpsa36ad.onion"
+  },
+  {
+    "post_title": "some-unrelated-victim",
+    "group_name": "play",
+    "discovered": "2024-03-03 03:30:00.000000",
+    "description": "Files available.",
+    "website": "http://playxxx.onion"
+  },
+  {
+    "post_title": "acme-corp.com",
+    "group_name": "lockbit3",
+    "discovered": "2024-03-06 11:00:00.000000",
+    "description": "DUPLICATE re-post with later timestamp; should collapse to first-seen.",
+    "website": "http://lockbitapt6vx57t3eeqjofwgcglmutr3a35nygvokja5uuccip4ykyd.onion"
+  }
+]
