@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: darkmirror, labels: { app: darkmirror } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: darkmirror } }
+  template:
+    metadata: { labels: { app: darkmirror } }
+    spec:
+      containers:
+        - name: darkmirror
+          image: ghcr.io/cognis-digital/darkmirror:latest
+          ports: [{ containerPort: 8000 }]
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "500m", memory: "256Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: darkmirror }
+spec:
+  selector: { app: darkmirror }
+  ports: [{ port: 80, targetPort: 8000 }]
