@@ -1,57 +1,116 @@
-# DARKMIRROR — Surface-web mirror of public Tor leak-site index for brand monitoring
+<a name="top"></a>
+<div align="center">
 
-> Part of the **[Cognis Neural Suite](https://github.com/cognis-digital)** by [Cognis Digital](https://cognis.digital)
-> Cognis Open Collaboration License (COCL) v1.0 · domain: `osint`
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:6b46c1,100:2b6cb0&height=120&section=header&text=DARKMIRROR&fontSize=48&fontColor=ffffff&fontAlignY=58" width="100%" alt="DARKMIRROR"/>
 
-[![PyPI](https://img.shields.io/pypi/v/cognis-darkmirror.svg)](https://pypi.org/project/cognis-darkmirror/)
-[![CI](https://github.com/cognis-digital/darkmirror/actions/workflows/ci.yml/badge.svg)](https://github.com/cognis-digital/darkmirror/actions)
-[![License: COCL 1.0](https://img.shields.io/badge/License-COCL%201.0-2b6cb0.svg)](LICENSE)
+# DARKMIRROR
 
-Surface-web mirror of public Tor leak-site index for brand monitoring.
+### Surface-web mirror of public Tor leak-site index for brand monitoring
 
-## Install
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3500&pause=1000&color=6B46C1&center=true&vCenter=true&width=720&lines=Surfaceweb+mirror+of+public+Tor+leaksite+index+for+brand+mon;Self-hostable+%C2%B7+MCP-native+%C2%B7+CI-ready+%C2%B7+polyglot" width="720"/>
+
+[![PyPI](https://img.shields.io/pypi/v/cognis-darkmirror.svg?color=6b46c1)](https://pypi.org/project/cognis-darkmirror/) [![CI](https://github.com/cognis-digital/darkmirror/actions/workflows/ci.yml/badge.svg)](https://github.com/cognis-digital/darkmirror/actions) [![License: COCL 1.0](https://img.shields.io/badge/License-COCL%201.0-2b6cb0.svg)](LICENSE) [![Suite](https://img.shields.io/badge/Cognis-Neural%20Suite-6b46c1.svg)](https://github.com/cognis-digital)
+
+*OSINT / SIGINT — open-source intelligence collection and correlation.*
+
+</div>
 
 ```bash
 pip install cognis-darkmirror
+darkmirror scan .            # → prioritized findings in seconds
 ```
 
-For local development from this repo:
+## Contents
 
-```bash
-pip install -e .
-```
+- [Why darkmirror?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Contributing](#contributing)
 
+<a name="why"></a>
+## Why darkmirror?
+
+Surface-web mirror of public Tor leak-site index for brand monitoring — without standing up heavyweight infrastructure.
+
+`darkmirror` is single-purpose, scriptable, and self-hostable: point it at a target, get prioritized results in the format your workflow already speaks (table · JSON · SARIF), gate CI on it, and let agents drive it over MCP.
+
+<div align="right"><a href="#top">↑ back to top</a></div>
+
+<a name="features"></a>
+## Features
+
+- ✅ Scan
+- ✅ Runs on Linux/macOS/Windows · Docker · devcontainer
+- ✅ Ports in Python, JavaScript, Go, and Rust (`ports/`)
+
+<div align="right"><a href="#top">↑ back to top</a></div>
+
+<a name="quick-start"></a>
 ## Quick start
 
 ```bash
+pip install cognis-darkmirror
 darkmirror --version
-darkmirror scan demos/                          # run against bundled demo
-darkmirror scan demos/ --format sarif --out r.sarif --fail-on high
-darkmirror mcp                                   # start as MCP server (Cognis.Studio / Claude Desktop / Cursor)
+darkmirror scan .                       # scan current project
+darkmirror scan . --format json         # machine-readable
+darkmirror scan . --fail-on high        # CI gate (non-zero exit)
 ```
 
-## Built-in demo scenarios
+<div align="right"><a href="#top">↑ back to top</a></div>
 
-Every scenario folder includes a `SCENARIO.md` describing what it represents and what findings to expect.
+<a name="example"></a>
+## Example
 
-- `demos/01-brand-on-extortion-blog/` — see [`SCENARIO.md`](demos/01-brand-on-extortion-blog/SCENARIO.md)
-- `demos/02-forum-chatter/` — see [`SCENARIO.md`](demos/02-forum-chatter/SCENARIO.md)
-- `demos/03-clean-brand/` — see [`SCENARIO.md`](demos/03-clean-brand/SCENARIO.md)
+```text
+$ darkmirror scan .
+  [HIGH    ] DAR-001  example finding             (./src/app.py)
+  [MEDIUM  ] DAR-002  another signal              (./config.yaml)
 
-## How it fits the Cognis Neural Suite
+  2 findings · risk score 5 · 38ms
+```
 
-This tool is one of 52 in the [Cognis Neural Suite](https://github.com/cognis-digital). The full suite + launcher lives at:
+<div align="right"><a href="#top">↑ back to top</a></div>
 
-- Suite landing: https://cognis.digital
-- All 52 repos: https://github.com/cognis-digital
-- Cognis.Studio (Enterprise AI Workforce, MCP host): https://cognis.studio
+<a name="how-it-compares"></a>
+## How it compares
 
-Every Suite tool ships an MCP server, so Cognis.Studio agents can call them as scoped capabilities.
+| | **Cognis darkmirror** | joshhighet |
+|---|:---:|:---:|
+| Self-hostable, no account | ✅ | varies |
+| Single command, zero config | ✅ | ⚠️ |
+| JSON + SARIF for CI | ✅ | varies |
+| MCP-native (AI agents) | ✅ | ❌ |
+| Polyglot ports (JS/Go/Rust) | ✅ | ❌ |
+| Open license | ✅ COCL | varies |
+
+*Built in the spirit of **joshhighet/ransomwatch**, re-framed the Cognis way. Missing a credit? Open a PR.*
+
+<div align="right"><a href="#top">↑ back to top</a></div>
+
+<a name="integrations"></a>
+## Integrations
+
+Pipes into your stack: **SARIF** for code-scanning, **JSON** for anything, an **MCP server** (`darkmirror mcp`) for AI agents, and a webhook forwarder for SIEM/Slack/Jira. See [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md).
+
+<div align="right"><a href="#top">↑ back to top</a></div>
+
+<a name="install-anywhere"></a>
+## Install anywhere
+
+| Linux | macOS | Windows | Docker | Cloud |
+|---|---|---|---|---|
+| `scripts/setup-linux.sh` | `scripts/setup-macos.sh` | `scripts/setup-windows.ps1` | `docker run ghcr.io/cognis-digital/darkmirror` | [DEPLOY.md](docs/DEPLOY.md) (AWS/Azure/GCP/k8s) |
+
+<div align="right"><a href="#top">↑ back to top</a></div>
+
+<a name="contributing"></a>
+## Contributing
+
+PRs, new rules, and demo scenarios are welcome under the collaboration-pull model — see [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
+
+> ### ⭐ If `darkmirror` saved you time, **star it** — it genuinely helps others find it.
 
 ## License
 
-Source-available under the **Cognis Open Collaboration License (COCL) v1.0** — free for personal, internal-evaluation, research, and educational use; **commercial / production use requires a license** (licensing@cognis.digital). See [LICENSE](LICENSE) and [CONTRIBUTING.md](CONTRIBUTING.md) for the collaboration-pull model.
+Source-available under the **Cognis Open Collaboration License (COCL) v1.0** — free for personal, internal-evaluation, research, and educational use; **commercial / production use requires a license** (licensing@cognis.digital). See [LICENSE](LICENSE).
 
-## About
+---
 
-**[Cognis Digital](https://cognis.digital)** — Wyoming, USA · *Making Tomorrow Better Today: Advanced Cybersecurity, AI Innovation, and Blockchain Expertise.*
+<div align="center"><sub><b><a href="https://cognis.digital">Cognis Digital</a></b> · one of 170+ tools in the <a href="https://github.com/cognis-digital/cognis-neural-suite">Cognis Neural Suite</a> · <i>Making Tomorrow Better Today</i></sub></div>
