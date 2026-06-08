@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/darkmirror",
+  "version": "0.2.0",
+  "description": "JavaScript port of darkmirror (Cognis Neural Suite)",
+  "bin": {
+    "darkmirror": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
