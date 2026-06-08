@@ -36,7 +36,11 @@ Surface-web mirror of public Tor leak-site index for brand monitoring — withou
 <a name="features"></a>
 ## Features
 
-- ✅ Scan
+- ✅ Load Posts
+- ✅ Normalize Posts
+- ✅ Match Watchlist
+- ✅ Diff Snapshots
+- ✅ Summarize
 - ✅ Runs on Linux/macOS/Windows · Docker · devcontainer
 - ✅ Ports in Python, JavaScript, Go, and Rust (`ports/`)
 
