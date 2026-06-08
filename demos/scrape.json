@@ -1,0 +1,14 @@
+[
+  {
+    "site": "lockbit-mirror",
+    "brand": "cognis",
+    "brand_match": true,
+    "forum_mention": false
+  },
+  {
+    "site": "darkforum.xx",
+    "brand": "cognis",
+    "brand_match": false,
+    "forum_mention": true
+  }
+]

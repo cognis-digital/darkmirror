@@ -1,0 +1,18 @@
+[
+  {
+    "site": "lockbit-mirror",
+    "brand": "acme-corp",
+    "brand_match": true,
+    "forum_mention": false,
+    "post_title": "Acme Corp - data dump - 47GB",
+    "ts": "2026-06-08T03:14:00Z"
+  },
+  {
+    "site": "alphv-mirror",
+    "brand": "acme-corp",
+    "brand_match": true,
+    "forum_mention": false,
+    "post_title": "countdown timer",
+    "ts": "2026-06-08T03:18:00Z"
+  }
+]
