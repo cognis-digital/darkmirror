@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-darkmirror
+pip install "git+https://github.com/cognis-digital/darkmirror.git"
 darkmirror scan .            # → prioritized findings in seconds
 ```
 
@@ -50,7 +50,7 @@ Surface-web mirror of public Tor leak-site index for brand monitoring — withou
 ## Quick start
 
 ```bash
-pip install cognis-darkmirror
+pip install "git+https://github.com/cognis-digital/darkmirror.git"
 darkmirror --version
 darkmirror scan .                       # scan current project
 darkmirror scan . --format json         # machine-readable

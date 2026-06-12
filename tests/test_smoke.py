@@ -1,5 +1,4 @@
 """Smoke tests for DARKMIRROR. No network. Standard library only."""
-import json
 import os
 import sys
 import unittest
