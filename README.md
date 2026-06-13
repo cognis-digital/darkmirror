@@ -20,6 +20,41 @@ pip install cognis-darkmirror
 darkmirror scan .            # → prioritized findings in seconds
 ```
 
+## Usage — step by step
+
+1. Install the CLI (Python 3.9+):
+
+   ```bash
+   pip install darkmirror     # or: pip install .   from a checkout
+   ```
+
+2. Watch a snapshot against your brand watchlist — the `watch` subcommand fuzzy-matches a surface-web leak-index snapshot (JSON) against terms:
+
+   ```bash
+   darkmirror watch snapshot.json --term acme-corp --term acme.com
+   darkmirror watch snapshot.json --watchlist brands.txt --threshold 0.82
+   ```
+
+3. Diff two snapshots to surface newly-added posts, or summarize one:
+
+   ```bash
+   darkmirror diff old.json new.json
+   darkmirror stats snapshot.json
+   ```
+
+4. Read the result — the global `--format json` flag emits structured matches with scores for alerting:
+
+   ```bash
+   darkmirror --format json watch snapshot.json -w brands.txt | jq '.matches[] | {term, score}'
+   ```
+
+5. Run periodically and alert on new hits — diff against the prior snapshot in a scheduled job:
+
+   ```bash
+   darkmirror --format json diff prev.json latest.json | jq -e '.added_count == 0'
+   ```
+
+
 ## Contents
 
 - [Why darkmirror?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
