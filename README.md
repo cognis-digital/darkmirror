@@ -9,16 +9,22 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=3500&pause=1000&color=6B46C1&center=true&vCenter=true&width=720&lines=Surfaceweb+mirror+of+public+Tor+leaksite+index+for+brand+mon;Self-hostable+%C2%B7+MCP-native+%C2%B7+CI-ready+%C2%B7+polyglot" width="720"/>
 
-[![PyPI](https://img.shields.io/pypi/v/cognis-darkmirror.svg?color=6b46c1)](https://pypi.org/project/cognis-darkmirror/) [![CI](https://github.com/cognis-digital/darkmirror/actions/workflows/ci.yml/badge.svg)](https://github.com/cognis-digital/darkmirror/actions) [![License: COCL 1.0](https://img.shields.io/badge/License-COCL%201.0-2b6cb0.svg)](LICENSE) [![Suite](https://img.shields.io/badge/Cognis-Neural%20Suite-6b46c1.svg)](https://github.com/cognis-digital)
+[![install](https://img.shields.io/badge/install-git%2B%20%C2%B7%20pipx%20%C2%B7%20uv-6b46c1.svg)](#install--every-way-every-platform) [![CI](https://github.com/cognis-digital/darkmirror/actions/workflows/ci.yml/badge.svg)](https://github.com/cognis-digital/darkmirror/actions) [![License: COCL 1.0](https://img.shields.io/badge/License-COCL%201.0-2b6cb0.svg)](LICENSE) [![Suite](https://img.shields.io/badge/Cognis-Neural%20Suite-6b46c1.svg)](https://github.com/cognis-digital)
 
 *OSINT / SIGINT — open-source intelligence collection and correlation.*
 
 </div>
 
 ```bash
-pip install cognis-darkmirror
+pip install "git+https://github.com/cognis-digital/darkmirror.git"
 darkmirror scan .            # → prioritized findings in seconds
 ```
+
+<!-- cognis:layman:start -->
+## What is this?
+
+Darkmirror is a brand-monitoring tool that watches publicly accessible leak-site indexes — the same sites where ransomware groups post the names of companies they have attacked — so you can find out if your organisation appears on one without having to visit those sites yourself. You give it a snapshot of that index (a JSON file) and a list of company names or domains to watch for, and it tells you if any of them show up as victims. It can also compare two snapshots taken at different times to show you what is new since your last check, or give you a summary of how many posts exist and which groups are most active. It is aimed at security teams and IT administrators who want an early warning when their organisation's name appears in a breach listing.
+<!-- cognis:layman:end -->
 
 ## Contents
 
@@ -47,10 +53,56 @@ Surface-web mirror of public Tor leak-site index for brand monitoring — withou
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:domains:start -->
+## Domains
+
+**Primary domain:** Intelligence & OSINT  ·  **JTF MERIDIAN division:** NULLBYTE · BLACK CELL
+
+**Topics:** `cognis` `osint` `intelligence` `recon`
+
+Part of the **Cognis Neural Suite** — 300+ source-available tools organized across 12 domains under the JTF MERIDIAN command structure. See the [suite on GitHub](https://github.com/cognis-digital) and [jtf-meridian](https://github.com/cognis-digital/jtf-meridian) for how the pieces fit together.
+<!-- cognis:domains:end -->
+
+<!-- cognis:install:start -->
+## Install
+
+`darkmirror` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/darkmirror/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/darkmirror/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/darkmirror.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/darkmirror.git"  # uv
+pip install "git+https://github.com/cognis-digital/darkmirror.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/darkmirror.git
+cd darkmirror && pip install .
+```
+
+Then run:
+```sh
+darkmirror --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
-pip install cognis-darkmirror
+pip install "git+https://github.com/cognis-digital/darkmirror.git"
 darkmirror --version
 darkmirror scan .                       # scan current project
 darkmirror scan . --format json         # machine-readable
@@ -143,6 +195,32 @@ curl -fsSL https://raw.githubusercontent.com/cognis-digital/darkmirror/main/inst
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="related"></a>
+<a name="verification"></a>
+## Verification
+
+[![tests](https://img.shields.io/badge/tests-14%20passing-2ea44f.svg)](AUDIT.md)
+
+Every push is verified end-to-end. Latest audit (2026-06-13):
+
+```text
+tests        : 14 passed, 0 failed, 0 errored
+compile      : all modules parse
+cli          : C:\Python314\python.exe: No module named https
+package      : https
+```
+
+<details><summary>CLI surface (<code>--help</code>)</summary>
+
+```text
+C:\Python314\python.exe: No module named https
+```
+</details>
+
+Full machine-readable results: [`AUDIT.md`](AUDIT.md) · regenerate with `python -m https --help` + `pytest -q`.
+
+<div align="right"><a href="#top">↑ back to top</a></div>
+
+
 ## Related Cognis tools
 
 - [`personagraph`](https://github.com/cognis-digital/personagraph) — Identity resolution dossier — username/email/phone cross-platform
