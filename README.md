@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/darkmirror.git"
 darkmirror scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+Darkmirror is a brand-monitoring tool that watches publicly accessible leak-site indexes — the same sites where ransomware groups post the names of companies they have attacked — so you can find out if your organisation appears on one without having to visit those sites yourself. You give it a snapshot of that index (a JSON file) and a list of company names or domains to watch for, and it tells you if any of them show up as victims. It can also compare two snapshots taken at different times to show you what is new since your last check, or give you a summary of how many posts exist and which groups are most active. It is aimed at security teams and IT administrators who want an early warning when their organisation's name appears in a breach listing.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why darkmirror?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -47,6 +53,42 @@ Surface-web mirror of public Tor leak-site index for brand monitoring — withou
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`darkmirror` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/darkmirror/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/darkmirror/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/darkmirror.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/darkmirror.git"  # uv
+pip install "git+https://github.com/cognis-digital/darkmirror.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/darkmirror.git
+cd darkmirror && pip install .
+```
+
+Then run:
+```sh
+darkmirror --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
