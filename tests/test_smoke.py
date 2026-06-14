@@ -110,5 +110,108 @@ class TestCli(unittest.TestCase):
         self.assertNotEqual(rc, 0)
 
 
+
+class TestHardening(unittest.TestCase):
+    """Tests for input validation, error handling, and edge cases."""
+
+    def test_missing_file_returns_nonzero(self):
+        """stats on a non-existent file must exit non-zero with no traceback."""
+        rc = main(["stats", "/no/such/snapshot.json"])
+        self.assertNotEqual(rc, 0)
+
+    def test_malformed_json_returns_nonzero(self):
+        """Non-JSON content in snapshot file must produce exit code 1."""
+        import tempfile
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as tf:
+            tf.write("{this is not json}")
+            name = tf.name
+        try:
+            rc = main(["stats", name])
+            self.assertEqual(rc, 1)
+        finally:
+            os.unlink(name)
+
+    def test_invalid_json_type_returns_nonzero(self):
+        """Valid JSON but wrong root type (string) must exit non-zero."""
+        import tempfile
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as tf:
+            tf.write('"just a string"')
+            name = tf.name
+        try:
+            rc = main(["stats", name])
+            self.assertNotEqual(rc, 0)
+        finally:
+            os.unlink(name)
+
+    def test_threshold_above_one_returns_two(self):
+        """--threshold > 1.0 must exit 2 with a clear error."""
+        snap = os.path.join(DEMO, "snapshot.json")
+        rc = main(["watch", snap, "-t", "acme", "--threshold", "1.5"])
+        self.assertEqual(rc, 2)
+
+    def test_threshold_zero_returns_two(self):
+        """--threshold == 0 must exit 2 (not silently return garbage results)."""
+        snap = os.path.join(DEMO, "snapshot.json")
+        rc = main(["watch", snap, "-t", "acme", "--threshold", "0"])
+        self.assertEqual(rc, 2)
+
+    def test_threshold_negative_returns_two(self):
+        """Negative --threshold must exit 2."""
+        snap = os.path.join(DEMO, "snapshot.json")
+        rc = main(["watch", snap, "-t", "acme", "--threshold", "-0.5"])
+        self.assertEqual(rc, 2)
+
+    def test_directory_as_snapshot_returns_nonzero(self):
+        """Passing a directory path as snapshot must exit non-zero without traceback."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmpdir:
+            rc = main(["stats", tmpdir])
+        self.assertNotEqual(rc, 0)
+
+    def test_empty_snapshot_returns_zero(self):
+        """Empty JSON array is valid input; must exit 0 with zero posts reported."""
+        import tempfile, io
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as tf:
+            tf.write("[]")
+            name = tf.name
+        try:
+            captured = io.StringIO()
+            import sys as _sys
+            old_stdout = _sys.stdout
+            _sys.stdout = captured
+            rc = main(["stats", name])
+            _sys.stdout = old_stdout
+            self.assertEqual(rc, 0)
+            self.assertIn("0 posts", captured.getvalue())
+        finally:
+            os.unlink(name)
+
+    def test_normalize_empty_list(self):
+        """normalize_posts([]) must return an empty list without error."""
+        from darkmirror.core import normalize_posts
+        result = normalize_posts([])
+        self.assertEqual(result, [])
+
+    def test_match_watchlist_empty_posts(self):
+        """match_watchlist on empty posts list must return empty list."""
+        from darkmirror.core import match_watchlist
+        result = match_watchlist([], ["acme"])
+        self.assertEqual(result, [])
+
+    def test_diff_snapshots_empty(self):
+        """diff_snapshots on two empty lists must return zero added/removed."""
+        from darkmirror.core import diff_snapshots
+        result = diff_snapshots([], [])
+        self.assertEqual(result["added"], [])
+        self.assertEqual(result["removed"], [])
+
+    def test_summarize_empty(self):
+        """summarize([]) must return zero counts, not raise."""
+        from darkmirror.core import summarize
+        s = summarize([])
+        self.assertEqual(s["total_posts"], 0)
+        self.assertEqual(s["distinct_groups"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()

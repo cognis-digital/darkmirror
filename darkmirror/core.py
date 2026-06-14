@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 from dataclasses import dataclass
 from datetime import datetime, date
@@ -131,6 +132,8 @@ class Match:
 
 def load_posts(path: str) -> list[Post]:
     """Load a snapshot JSON file from disk and normalize it."""
+    if os.path.isdir(path):
+        raise IsADirectoryError(21, "Is a directory", path)
     with open(path, "r", encoding="utf-8") as fh:
         raw = json.load(fh)
     return normalize_posts(raw)

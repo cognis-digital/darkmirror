@@ -50,6 +50,13 @@ def _emit(payload: dict[str, Any], fmt: str, table_lines: list[str]) -> None:
 
 
 def _cmd_watch(args) -> int:
+    if not (0 < args.threshold <= 1.0):
+        print(
+            f"error: --threshold must be between 0 (exclusive) and 1.0 (inclusive),"
+            f" got {args.threshold}",
+            file=sys.stderr,
+        )
+        return 2
     terms = _read_terms(args)
     if not terms:
         print("error: provide at least one --term or a --watchlist file", file=sys.stderr)
@@ -172,7 +179,16 @@ def main(argv: list[str] | None = None) -> int:
         return args.func(args)
     except FileNotFoundError as e:
         print(f"error: file not found: {e.filename}", file=sys.stderr)
-        return 1
+        return 2
+    except IsADirectoryError as e:
+        print(f"error: path is a directory, not a file: {e.filename}", file=sys.stderr)
+        return 2
+    except PermissionError as e:
+        print(f"error: permission denied: {e.filename}", file=sys.stderr)
+        return 2
+    except OSError as e:
+        print(f"error: cannot read file: {e}", file=sys.stderr)
+        return 2
     except (ValueError, json.JSONDecodeError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
