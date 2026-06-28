@@ -1,0 +1,3 @@
+$ darkmirror-emit --version
+
+darkmirror 0.1.0

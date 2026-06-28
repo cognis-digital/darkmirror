@@ -1,0 +1,18 @@
+$ darkmirror-emit --help
+
+usage: darkmirror [-h] [--version] [--format {table,json}]
+                  {watch,diff,stats} ...
+
+Surface-web mirror of a public Tor leak-site index for brand monitoring.
+
+positional arguments:
+  {watch,diff,stats}
+    watch               match a snapshot against a brand watchlist
+    diff                show posts newly added between two snapshots
+    stats               summarize a snapshot
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+                        output format (default: table)

@@ -20,6 +20,67 @@ pip install cognis-darkmirror
 darkmirror scan .            # → prioritized findings in seconds
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ darkmirror-emit --version
+darkmirror 0.1.0
+```
+
+```console
+$ darkmirror-emit --help
+usage: darkmirror [-h] [--version] [--format {table,json}]
+                  {watch,diff,stats} ...
+
+Surface-web mirror of a public Tor leak-site index for brand monitoring.
+
+positional arguments:
+  {watch,diff,stats}
+    watch               match a snapshot against a brand watchlist
+    diff                show posts newly added between two snapshots
+    stats               summarize a snapshot
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+                        output format (default: table)
+```
+
+> Blocks above are real `darkmirror` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"Findings": [
+    {
+        "id": "123456",
+        "title": "Suspicious Network Traffic",
+        "description": "Potential malicious activity detected on network interface 192.168.1.100.",
+        "created_at": "2023-02-15T14:30:00Z",
+        "updated_at": "2023-02-15T14:30:00Z",
+        "objects": [
+            {
+                "id": "obj123456",
+                "type": "indicator",
+                "name": "Malicious IP Address",
+                "description": "Potential malicious activity detected on network interface 192.168.1.100.",
+                "created_at": "2023-02-15T14:30:00Z",
+                "updated_at": "2023-02-15T14:30:00Z"
+            }
+        ]
+    }
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. Install the CLI (Python 3.9+):
